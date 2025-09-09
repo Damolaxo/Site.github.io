@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Your Cart - My Shop{% endblock %}
+{% block content %}
+  <h1>Your Cart</h1>
+  {% if cart %}
+    <ul class="list-group mb-3">
+      {% for item in cart %}
+        <li class="list-group-item d-flex justify-content-between">
+          {{ item.name }} <span>${{ item.price }}</span>
+        </li>
+      {% endfor %}
+    </ul>
+    <a href="{{ url_for('clear_cart') }}" class="btn btn-danger">Clear Cart</a>
+  {% else %}
+    <p>Your cart is empty.</p>
+  {% endif %}
+{% endblock %}
